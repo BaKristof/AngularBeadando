@@ -1,0 +1,12 @@
+<p>Valami</p>
+
+
+<div *ngFor="let message of messageList">
+  <li>
+      {{message}}
+  </li>
+</div>
+
+<input type="text" [(ngModel)]="newMessage"/>
+  <button (click)="sendMessage()">Send Message</button>
+  

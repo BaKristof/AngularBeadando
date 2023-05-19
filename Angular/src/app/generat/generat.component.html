@@ -1,0 +1,58 @@
+<p>generate work</p>
+<div>
+  <button class="row-md-4" (click)="valami2()" >Valami kell erre</button>
+
+</div>
+<div>
+<select [(ngModel)]="selectedgenerator">
+  <option *ngFor="let generate of generatornames">{{generate}}</option>
+</select>
+</div>
+valami{{selectedgenerator}}valami
+<div>
+  <Button class="row-md-4" (click)="valami3()">Generator kikapcs</Button>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col-md-10">
+    <input type="text" class="form-control" placeholder="Name" [ngModel]="genname">
+  </div>
+</div>
+
+<div>
+{{valami}}
+</div>
+
+  Max
+  <input type="number" [(ngModel)]="maxnumber" >
+<div>
+  Minimum
+  <input type="number" [(ngModel)]="minnumber">
+</div>
+
+<div>
+  <button (click)="getdata2()" >Hibak</button>
+  <div *ngFor="let message of aktivak">
+    <li>
+        {{message}}
+    </li>
+  </div>
+
+</div>
+
+
+
+
+
+<div>
+  <button (click)="getdata()" >Aktív</button>
+  <div *ngFor="let message of hibak">
+    <li>
+        {{message.name}},     {{message.ertek}},  {{message.time}}
+
+    </li>
+  </div>
+
+
+</div>
