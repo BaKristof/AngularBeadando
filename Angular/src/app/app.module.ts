@@ -11,7 +11,6 @@ import { DiagramComponent } from './diagram/diagram.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GeneratComponent } from './generat/generat.component';
 import { TimediagramComponent } from './timediagram/timediagram.component';
-import { ChatComponent } from './chat/chat.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
@@ -23,7 +22,6 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
     WelcomeComponent,
     GeneratComponent,
     TimediagramComponent,
-    ChatComponent
   ],
   imports: [
     SocketIoModule.forRoot(config),

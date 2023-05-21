@@ -14,6 +14,8 @@ export class TimediagramComponent implements OnInit {
   label: string[]= [];
   data: number[]= [];
   time: string[]= [];
+  korabban: string = "2023-05-01 00:00:00";
+  kesobb: string = "2023-05-15 00:00:00";
   constructor(private http: HttpClient) {}
 
 ngOnInit(){
@@ -77,8 +79,8 @@ addData(chart: Chart, data:number,time:string) {
 sendDataToServer() {
     const url = 'http://localhost:4444/timediagram'; // Replace with your Node.js server URL
     const data = {
-      korabban:"2023-05-01 00:00:00",
-      kesobb: "2023-05-15 00:00:00"
+      korabban: this.korabban,
+      kesobb: this.kesobb
     };
     
     this.http.post<any[]>(url, data)

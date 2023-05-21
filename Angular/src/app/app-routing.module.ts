@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GeneratComponent } from './generat/generat.component';
 import { DiagramComponent } from './diagram/diagram.component';
-import { ChatComponent } from './chat/chat.component';
 import { TimediagramComponent } from './timediagram/timediagram.component';
 const routes: Routes = [
 
@@ -18,11 +17,6 @@ const routes: Routes = [
   {
     path: 'diagram',
     component: DiagramComponent,
-  },
-  {
-    path: 'chat',
-    component: ChatComponent,
-
   },
   {
     path: 'time',

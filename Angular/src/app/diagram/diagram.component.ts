@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Socket } from 'ngx-socket-io';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diagram',
@@ -11,7 +12,7 @@ import { Socket } from 'ngx-socket-io';
 
 
 export class DiagramComponent implements OnInit { 
-  constructor(private socket:Socket){}
+  constructor(private socket:Socket, private router :Router){}
 
   label! : string[] ;
   datas! : number[] ;
@@ -81,6 +82,16 @@ addData(chart: Chart, label: any, data:number) {
   });
   chart.update();
 }
+
+gototomediagram(){
+  
+this.router.navigateByUrl('/time');
+}
+
+gotogenerate(){
+  
+  this.router.navigateByUrl('/generat');
+  }
 
 
 }

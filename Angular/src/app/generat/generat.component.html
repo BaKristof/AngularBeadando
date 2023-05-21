@@ -1,6 +1,5 @@
-<p>generate work</p>
 <div>
-  <button class="row-md-4" (click)="valami2()" >Valami kell erre</button>
+  <button class="row-md-4" (click)="valami2()" >Genrátor inditása</button>
 
 </div>
 <div>
@@ -8,7 +7,7 @@
   <option *ngFor="let generate of generatornames">{{generate}}</option>
 </select>
 </div>
-valami{{selectedgenerator}}valami
+a kiválasztot generátor id-ja: {{selectedgenerator}}
 <div>
   <Button class="row-md-4" (click)="valami3()">Generator kikapcs</Button>
 </div>
@@ -16,12 +15,13 @@ valami{{selectedgenerator}}valami
 
 <div class="row mt-3">
   <div class="col-md-10">
-    <input type="text" class="form-control" placeholder="Name" [ngModel]="genname">
+    <input type="text" class="form-control" placeholder="Generater name" [(ngModel)]="genname">
   </div>
 </div>
 
+
 <div>
-{{valami}}
+az elküldött random szám: {{valami}}
 </div>
 
   Max
@@ -32,12 +32,18 @@ valami{{selectedgenerator}}valami
 </div>
 
 <div>
-  <button (click)="getdata2()" >Hibak</button>
+  <button (click)="getdata()" >Hibak</button>
+  <table>
+
+<tr>
+  
   <div *ngFor="let message of aktivak">
     <li>
-        {{message}}
+      {{message}}
     </li>
   </div>
+</tr>
+  </table>
 
 </div>
 
@@ -46,13 +52,20 @@ valami{{selectedgenerator}}valami
 
 
 <div>
-  <button (click)="getdata()" >Aktív</button>
-  <div *ngFor="let message of hibak">
-    <li>
-        {{message.name}},     {{message.ertek}},  {{message.time}}
+  <button (click)="getdata2()" >Aktív</button>
+  <table>
 
-    </li>
-  </div>
+    <tr>
+      <div *ngFor="let message of hibak">
+        <li>
+          {{message.name}},     {{message.ertek}},  {{message.time}}
+          
+        </li>
+      </div>
+    </tr>
+  </table>
 
 
 </div>
+<Button (click)="gotomediagram()">Diagram</Button>
+<Button (click)="gototime()">timediagram</Button>
