@@ -1,10 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Hiba {
-  @PrimaryGeneratedColumn()
-  id: number;
-
   @Column()
   Komponens: string;
 
@@ -13,4 +10,6 @@ export class Hiba {
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   Idopillanat: Date;
+  @PrimaryColumn()
+  id: number;
 }

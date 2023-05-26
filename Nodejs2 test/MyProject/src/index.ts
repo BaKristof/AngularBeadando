@@ -29,7 +29,6 @@ app.get('/hibak', async (req, res) => {
   app.post('/active', async (req, res) => {
     const bool = req.body.bool;
     const name = req.body.name;
-
     try {
       const activeRepository = AppDataSource.getRepository(Active);
       if (bool === 1) {
@@ -44,6 +43,7 @@ app.get('/hibak', async (req, res) => {
       res.status(500).send('Error updating data');
     }
   });
+
   app.post('/timediagram', async (req, res) => {
     const korabb = req.body.korabb;
     const kesobb = req.body.kesobb;
@@ -54,6 +54,19 @@ app.get('/hibak', async (req, res) => {
       const adatok = await adatokRepository.createQueryBuilder("adatok")
         .where("adatok.Felvet BETWEEN :korabb AND :kesobb", { korabb, kesobb })
         .andWhere("adatok.Komponens = :komponens", { komponens })
+        .getMany();
+      res.status(200).json(adatok);
+    } catch (error) {
+      console.error('Error retrieving data from database:', error);
+      res.status(500).send('Error retrieving data from database');
+    }
+  });
+
+  app.get('/timediagramname', async (req, res) => {
+    try {
+      const adatokRepository = AppDataSource.getRepository(Adatok);
+      const adatok = await adatokRepository.createQueryBuilder('adatok')
+        .select('adatok.Komponens')
         .getMany();
       res.status(200).json(adatok);
     } catch (error) {

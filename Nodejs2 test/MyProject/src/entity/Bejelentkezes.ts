@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Bejelentkezes {
-  @PrimaryColumn()
+  @Column()
   email: string;
 
   @Column()

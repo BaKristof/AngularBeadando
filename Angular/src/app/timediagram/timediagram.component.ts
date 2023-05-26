@@ -16,11 +16,13 @@ export class TimediagramComponent implements OnInit {
   time: string[]= [];
   korabban: string = "2023-05-01 00:00:00";
   kesobb: string = "2023-05-15 00:00:00";
+  name: string[]=[];
+  actualname!: string;
   constructor(private http: HttpClient) {}
 
 ngOnInit(){
- this.makechart();
-this.sendDataToServer();
+  this.getDaraFromServer();
+  this.makechart();
 }
 
 
@@ -34,10 +36,10 @@ makechart(){
    this.chart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: [],
+      labels: ['valami' ,'valami2'],
         datasets: [{
         label: '',
-        data: [],
+        data: [30, 10],
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1
@@ -53,7 +55,7 @@ makechart(){
     }
   });
 }
-}
+  }
   
 }
 removeALLData() {
@@ -68,6 +70,7 @@ removeALLData() {
 }
 
 
+
 addData(chart: Chart, data:number,time:string) {
   chart.data.labels?.push(time);
   chart.data.datasets[0].data.push(data);
@@ -75,8 +78,23 @@ addData(chart: Chart, data:number,time:string) {
 }
 
 
+getDaraFromServer(){
+  const url = 'http://localhost:4444/timediagramname'; // Replace with your Node.js server URL
+
+  this.http.get<any[]>(url).subscribe(response => {
+    console.log('Response:');
+    for(const item of response)
+    {
+      console.log(item.Komponens);
+      this.name.push(item.Komponens);
+    }
+  }, error => { console.error('Error:', error);  }
+  );
+}
 
 sendDataToServer() {
+  this.removeALLData();
+  this.chart.data.datasets[0].label = this.actualname;
     const url = 'http://localhost:4444/timediagram'; // Replace with your Node.js server URL
     const data = {
       korabban: this.korabban,
@@ -88,19 +106,16 @@ sendDataToServer() {
         response => {
           console.log('Response:', response);
           this.removeALLData();
-          this.chart.data.datasets[0].label = response[0].Komponens;
 
           for(const item of response)
           {
-            console.log(item.Komponens);
             console.log(item.Adat);
             console.log(item.Felvet); 
             this.addData(this.chart,item.Adat,item.Felvet);
-            this.label.push(item.Komponens);
             this.data.push(item.Adat);
             this.time.push(item.Felvet);
+              
           }
-
         },
         error => {
           console.error('Error:', error);

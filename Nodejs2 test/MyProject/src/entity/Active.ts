@@ -2,6 +2,8 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Active {
-  @PrimaryColumn()
+  @Column()
   Komp: string;
+  @PrimaryColumn()
+  id: number;
 }

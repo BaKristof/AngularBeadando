@@ -8,7 +8,11 @@ Ide hogy mikortol
 <input type="text" placeholder="YYYY-MM-DD HH:MM:SS" [(ngModel)]="korabban">
 ide hogy meddig
 <input type="text" placeholder="YYYY-MM-DD HH:MM:SS" [(ngModel)]="kesobb" >
+A gép neve
+<select [(ngModel)]="actualname">
+    <option *ngFor="let generate of name">{{generate}}</option>
+  </select>
 </div>
 <div>
-<button (click)="sendDataToServer" >Lekérdezés</button>
+<button (click)="sendDataToServer()" >Lekérdezés</button>
 </div>
