@@ -2,6 +2,9 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Bejelentkezes {
+  @PrimaryColumn()
+  id: number;
+  
   @Column()
   email: string;
 

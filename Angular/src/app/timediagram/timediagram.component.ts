@@ -97,8 +97,9 @@ sendDataToServer() {
   this.chart.data.datasets[0].label = this.actualname;
     const url = 'http://localhost:4444/timediagram'; // Replace with your Node.js server URL
     const data = {
-      korabban: this.korabban,
-      kesobb: this.kesobb
+      korabb: this.korabban,
+      kesobb: this.kesobb,
+      komponens: this.actualname
     };
     
     this.http.post<any[]>(url, data)

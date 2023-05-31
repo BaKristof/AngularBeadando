@@ -48,6 +48,7 @@ app.get('/hibak', async (req, res) => {
     const korabb = req.body.korabb;
     const kesobb = req.body.kesobb;
     const komponens = req.body.komponens;
+    console.log(korabb, kesobb, komponens);
 
     try {
       const adatokRepository = AppDataSource.getRepository(Adatok);
@@ -66,8 +67,8 @@ app.get('/hibak', async (req, res) => {
     try {
       const adatokRepository = AppDataSource.getRepository(Adatok);
       const adatok = await adatokRepository.createQueryBuilder('adatok')
-        .select('adatok.Komponens')
-        .getMany();
+        .select('DISTINCT adatok.Komponens')
+        .getRawMany(); 
       res.status(200).json(adatok);
     } catch (error) {
       console.error('Error retrieving data from database:', error);

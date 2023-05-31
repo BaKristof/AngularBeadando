@@ -1,7 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Adatok {
+  @PrimaryGeneratedColumn()
+  id: number;
+
   @Column()
   Komponens: string;
 
@@ -10,6 +13,5 @@ export class Adatok {
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   Felvet: Date;
-  @PrimaryColumn()
-  id: number;
+
 }

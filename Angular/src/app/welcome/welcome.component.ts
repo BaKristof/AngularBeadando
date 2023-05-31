@@ -7,20 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
-
-  username!: string;
-  password!: string;
   constructor(private router:Router){}
-  login(){
-
-
-
-  } 
-  logon(){
-
-
-
-  }
   savegenrater(){
     this.router.navigateByUrl('/generat');
   }
@@ -28,4 +15,8 @@ export class WelcomeComponent {
 
     this.router.navigateByUrl('/diagram');
   }
+  gototime(){
+    this.router.navigateByUrl('/time');
+  }
+
 }
