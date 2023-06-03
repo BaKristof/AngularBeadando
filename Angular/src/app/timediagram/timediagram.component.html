@@ -1,18 +1,33 @@
-<div>
-    <canvas id="myChart2"></canvas>
-</div>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <canvas id="myChart2"></canvas>
+    </div>
+  </div>
 
+  <div class="row mt-3">
+    <div class="col-md-6">
+      Ide hogy mikortól
+      <input type="text" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS" [(ngModel)]="korabban">
+    </div>
+    <div class="col-md-6">
+      Ide hogy meddig
+      <input type="text" class="form-control" placeholder="YYYY-MM-DD HH:MM:SS" [(ngModel)]="kesobb">
+    </div>
+  </div>
 
-<div>
-Ide hogy mikortol
-<input type="text" placeholder="YYYY-MM-DD HH:MM:SS" [(ngModel)]="korabban">
-ide hogy meddig
-<input type="text" placeholder="YYYY-MM-DD HH:MM:SS" [(ngModel)]="kesobb" >
-A gép neve
-<select [(ngModel)]="actualname">
-    <option *ngFor="let generate of name">{{generate}}</option>
-  </select>
-</div>
-<div>
-<button (click)="sendDataToServer()" >Lekérdezés</button>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      A gép neve
+      <select class="form-select" [(ngModel)]="actualname">
+        <option *ngFor="let generate of name">{{generate}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <button class="btn btn-outline-primary" (click)="sendDataToServer()">Lekérdezés</button>
+    </div>
+  </div>
 </div>
